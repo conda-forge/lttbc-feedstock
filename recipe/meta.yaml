@@ -1,5 +1,5 @@
 {% set name = "lttbc" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/lttbc-{{ version }}.tar.gz
-  sha256: 8ee634437b8a265d73de758bb81354aee4206698caa0e65fdd33568dc2373d47
+  sha256: c55518b344703f6d592fb484d6f4fbaea0ae7060c06052439d6665828c428fcb
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py<36]
   script: {{ PYTHON }} -m pip install . -vv
 
