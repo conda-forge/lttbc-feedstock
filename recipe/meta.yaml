@@ -11,7 +11,7 @@ source:
   sha256: dff2539ecdd8ba1500c09be22ffd52fd5146f98c12dc7290b6b938a5b656b474
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<36]
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -21,13 +21,13 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - numpy
     - pip
     - python
     - setuptools-scm
   run:
-    - {{ pin_compatible('numpy') }}
     - python
 
 test:
