@@ -1,5 +1,5 @@
 {% set name = "lttbc" %}
-{% set version = "0.2.4" %}
+{% set version = "0.3.0" %}
 
 
 package:
@@ -8,28 +8,29 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/lttbc-{{ version }}.tar.gz
-  sha256: dff2539ecdd8ba1500c09be22ffd52fd5146f98c12dc7290b6b938a5b656b474
+  sha256: eecffefddf8883091070cbde460011c5301c9291ab61b707c87260071588a897
 
 build:
-  number: 4
-  skip: true  # [py<36]
+  number: 0
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
+    - numpy >=2.0                            # [build_platform != target_platform]
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
   host:
-    - numpy
+    - numpy >=2.0
     - pip
     - python
-    - setuptools-scm
-    - setuptools
+    - setuptools >=65.5.0
+    - wheel >=0.40
   run:
     - python
+    - numpy >=2.0
 
 test:
   imports:
